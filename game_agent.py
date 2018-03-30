@@ -4,11 +4,9 @@ and include the results in your report.
 """
 import random
 
-
 class SearchTimeout(Exception):
     """Subclass base exception for code clarity. """
     pass
-
 
 def custom_score(game, player):
     """Calculate the heuristic value of a game state from the point of view
@@ -37,7 +35,6 @@ def custom_score(game, player):
     # TODO: finish this function!
     raise NotImplementedError
 
-
 def custom_score_2(game, player):
     """Calculate the heuristic value of a game state from the point of view
     of the given player.
@@ -62,7 +59,6 @@ def custom_score_2(game, player):
     """
     # TODO: finish this function!
     raise NotImplementedError
-
 
 def custom_score_3(game, player):
     """Calculate the heuristic value of a game state from the point of view
@@ -89,7 +85,6 @@ def custom_score_3(game, player):
     # TODO: finish this function!
     raise NotImplementedError
 
-
 class IsolationPlayer:
     """Base class for minimax and alphabeta agents -- this class is never
     constructed or tested directly.
@@ -112,12 +107,12 @@ class IsolationPlayer:
         positive value large enough to allow the function to return before the
         timer expires.
     """
+
     def __init__(self, search_depth=3, score_fn=custom_score, timeout=10.):
         self.search_depth = search_depth
         self.score = score_fn
         self.time_left = None
         self.TIMER_THRESHOLD = timeout
-
 
 class MinimaxPlayer(IsolationPlayer):
     """Game-playing agent that chooses a move using depth-limited minimax
@@ -214,7 +209,6 @@ class MinimaxPlayer(IsolationPlayer):
 
         # TODO: finish this function!
         raise NotImplementedError
-
 
 class AlphaBetaPlayer(IsolationPlayer):
     """Game-playing agent that chooses a move using iterative deepening minimax
