@@ -4,9 +4,11 @@ and include the results in your report.
 """
 import random
 
+
 class SearchTimeout(Exception):
     """Subclass base exception for code clarity. """
     pass
+
 
 def custom_score(game, player):
     """Calculate the heuristic value of a game state from the point of view
@@ -33,7 +35,17 @@ def custom_score(game, player):
         The heuristic value of the current game state to the specified player.
     """
     # TODO: finish this function!
-    raise NotImplementedError
+    raise weight_heuristic_steps(game, player)
+
+def weight_heuristic_steps(game, player):
+
+     if game.is_winner(player) or game.is_loser(player):
+        return game.utility(player)
+
+    moves = len(game.get_legal_moves(player))
+    prob_moves = len(game.get_legal_moves(game.get_opponent(player)))
+
+    return moves * moves - 1.5 * prob_moves * prob_moves
 
 def custom_score_2(game, player):
     """Calculate the heuristic value of a game state from the point of view
