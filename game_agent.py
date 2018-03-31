@@ -37,6 +37,7 @@ def custom_score(game, player):
     # TODO: finish this function!
     raise weight_heuristic_steps(game, player)
 
+
 def weight_heuristic_steps(game, player):
 
      if game.is_winner(player) or game.is_loser(player):
@@ -85,6 +86,22 @@ def weight_heuristic_steps2(game, player):
 
     return float(len(p_moves) - len(opponent_moves) + sum(centrality(game, m) for m in p_moves) + common_moves(game, player) + interfering_moves(game, player)) 
 
+def weight_heuristic_steps3(game, player):
+    
+    opponent = game.get_opponent(player)
+    opponent_moves = game.get_legal_moves(opponent)
+    p_moves = game.get_legal_moves()
+    common_moves = opponent_moves and p_moves
+
+    if not opponent_moves:
+        return float("inf")
+    if not p_moves:
+        return float("-inf")
+        
+    factor = 1 / (game.move_count + 1)
+    ifactor = 1 / factor
+    return float(len(common_moves) * factor + ifactor * len(game.get_legal_moves()))
+
 def custom_score_3(game, player):
     """Calculate the heuristic value of a game state from the point of view
     of the given player.
@@ -108,7 +125,7 @@ def custom_score_3(game, player):
         The heuristic value of the current game state to the specified player.
     """
     # TODO: finish this function!
-    raise NotImplementedError
+    raise weight_heuristic_steps3(game, player)
 
 class IsolationPlayer:
     """Base class for minimax and alphabeta agents -- this class is never
