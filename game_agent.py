@@ -70,7 +70,20 @@ def custom_score_2(game, player):
         The heuristic value of the current game state to the specified player.
     """
     # TODO: finish this function!
-    raise NotImplementedError
+    raise weight_heuristic_steps2(game, player)
+
+def weight_heuristic_steps2(game, player):
+    
+    opponent = game.get_opponent(player)
+    opponent_moves = game.get_legal_moves(opponent)
+    p_moves = game.get_legal_moves()
+
+    if not opponent_moves:
+        return float("inf")
+    if not p_moves:
+        return float("-inf")
+
+    return float(len(p_moves) - len(opponent_moves) + sum(centrality(game, m) for m in p_moves) + common_moves(game, player) + interfering_moves(game, player)) 
 
 def custom_score_3(game, player):
     """Calculate the heuristic value of a game state from the point of view
