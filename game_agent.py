@@ -100,9 +100,9 @@ def weight_heuristic_steps3(game, player):
     if not p_moves:
         return float("-inf")
 
-    factor = 1 / (game.move_count + 1)
-    ifactor = 1 / factor
-    return float(len(common_moves) * factor + ifactor * len(game.get_legal_moves()))
+    move_convergence = 1 / (game.move_count + 1)
+    inverse_convergence = 1 / move_convergence
+    return float(len(common_moves) * move_convergence + inverse_convergence * len(game.get_legal_moves()))
 
 def custom_score_3(game, player):
     """Calculate the heuristic value of a game state from the point of view
