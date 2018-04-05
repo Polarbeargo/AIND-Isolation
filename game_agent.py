@@ -1,9 +1,4 @@
-"""Finish all TODO items in this file to complete the isolation project, then
-test your agent's strength against a set of known agents using tournament.py
-and include the results in your report.
-"""
 import random
-
 
 class SearchTimeout(Exception):
     """Subclass base exception for code clarity. """
@@ -33,7 +28,6 @@ def custom_score(game, player):
     float
         The heuristic value of the current game state to the specified player.
     """
-    # TODO: finish this function!
     return weight_heuristic_steps(game, player)
 
 def weight_heuristic_steps(game, player):
@@ -72,7 +66,6 @@ def custom_score_2(game, player):
     float
         The heuristic value of the current game state to the specified player.
     """
-    # TODO: finish this function!
     return weight_heuristic_steps2(game, player)
 
 def weight_heuristic_steps2(game, player):
@@ -126,7 +119,6 @@ def custom_score_3(game, player):
     float
         The heuristic value of the current game state to the specified player.
     """
-    # TODO: finish this function!
     return weight_heuristic_steps3(game, player)
 
 class IsolationPlayer:
@@ -283,7 +275,6 @@ class MinimaxPlayer(IsolationPlayer):
                 each helper function or else your agent will timeout during
                 testing.
         """
-        # TODO: finish this function!
         self.check_time()
         moves = game.get_legal_moves()
         if not moves:
@@ -332,8 +323,6 @@ class AlphaBetaPlayer(IsolationPlayer):
             (-1, -1) if there are no available legal moves.
         """
         self.time_left = time_left
-
-        # TODO: finish this function!
         move = (-1, -1)
         for i in range(1, 10000):
             try:
@@ -428,7 +417,6 @@ class AlphaBetaPlayer(IsolationPlayer):
                 each helper function or else your agent will timeout during
                 testing.
         """
-        # TODO: finish this function!
         self.check_time()
         _,move = self.max_value(game, depth, alpha, beta)
         return move
