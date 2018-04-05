@@ -47,7 +47,7 @@ def weight_heuristic_steps(game, player):
     moves = len(game.get_legal_moves(player))
     prob_moves = len(game.get_legal_moves(game.get_opponent(player)))
 
-    return moves * moves - 1.5 * prob_moves * prob_moves
+    return moves ** 2 - 1.5 * prob_moves ** 2
 
 
 def custom_score_2(game, player):
